@@ -19,7 +19,7 @@ jobs:
       with:
         test-name: caseR
         setup-command: ''
-        command: gradle test --test "*caseR*"
+        command: gradle test --tests "*caseR*"
         timeout: 10
         max-score: 1
     - name: "y"
@@ -28,31 +28,34 @@ jobs:
       with:
         test-name: "y"
         setup-command: ''
-        command: gradle test --test "*y*"
+        command: gradle test --tests "*y*"
         timeout: 10
+        max-score: 1
     - name: vowels
       id: vowels
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: vowels
         setup-command: ''
-        command: gradle test --test "*vowels*"
+        command: gradle test --tests "*vowels*"
         timeout: 10
+        max-score: 1
     - name: q
       id: q
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: q
         setup-command: ''
-        command: gradle test --test "*q*"
+        command: gradle test --tests "*q*"
         timeout: 10
+        max-score: 1
     - name: multipleConsonant
       id: multipleconsonant
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: multipleConsonant
         setup-command: ''
-        command: gradle test --test "*multipleConsonant*"
+        command: gradle test --tests "*multipleConsonant*"
         timeout: 10
         max-score: 1
     - name: Autograding Reporter
