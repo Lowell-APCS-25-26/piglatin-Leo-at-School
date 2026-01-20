@@ -1,0 +1,67 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: caseR
+      id: caser
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: caseR
+        setup-command: ''
+        command: gradle test --test "*caseR*"
+        timeout: 10
+        max-score: 1
+    - name: "y"
+      id: "y"
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: "y"
+        setup-command: ''
+        command: gradle test --test "*y*"
+        timeout: 10
+    - name: vowels
+      id: vowels
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: vowels
+        setup-command: ''
+        command: gradle test --test "*vowels*"
+        timeout: 10
+    - name: q
+      id: q
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: q
+        setup-command: ''
+        command: gradle test --test "*q*"
+        timeout: 10
+    - name: multipleConsonant
+      id: multipleconsonant
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: multipleConsonant
+        setup-command: ''
+        command: gradle test --test "*multipleConsonant*"
+        timeout: 10
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        CASER_RESULTS: "${{steps.caser.outputs.result}}"
+        Y_RESULTS: "${{steps.y.outputs.result}}"
+        VOWELS_RESULTS: "${{steps.vowels.outputs.result}}"
+        Q_RESULTS: "${{steps.q.outputs.result}}"
+        MULTIPLECONSONANT_RESULTS: "${{steps.multipleconsonant.outputs.result}}"
+      with:
+        runners: caser,y,vowels,q,multipleconsonant
