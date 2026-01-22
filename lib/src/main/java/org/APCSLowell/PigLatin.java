@@ -28,16 +28,20 @@ public class PigLatin {
         //postcondition: returns the pig latin equivalent of sWord
 
         if (charIsVowel(sWord.charAt(0))){ //Starts with vowel
+            System.out.println(sWord + "way");
             return sWord + "way";
 
         } else if (!stringAnyVowels(sWord)){ //All consonants
+            System.out.println(sWord + "ay");
             return sWord + "ay";
 
         } else if (sWord.substring(0, 2).equals("qu")){ //Starts with "qu"
+            System.out.println(sWord.substring(2) + "quay");
             return sWord.substring(2) + "quay";
 
         } else { //Starts with consonant, has vowels
             int firstVowelIndex = findFirstVowel(sWord);
+            System.out.println(sWord.substring(firstVowelIndex) + sWord.substring(0, firstVowelIndex) + "ay");
             return sWord.substring(firstVowelIndex) + sWord.substring(0, firstVowelIndex) + "ay";
         }
     }
