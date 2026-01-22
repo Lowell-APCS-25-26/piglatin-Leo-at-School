@@ -44,7 +44,7 @@ public class PigLatin {
 
     private char charLower(char character){
         //Lowercase
-        if (character >= (int)'a' && character <= 'z'){
+        if ((int)character >= (int)'a' && (int)character <= 'z'){
             return character;
         }
 
@@ -66,10 +66,10 @@ public class PigLatin {
     private boolean stringAnyVowels(String word){
         for (int i = 0; i < word.length(); i++){
             if (charIsVowel(word.charAt(i))){
-                return false;
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 }
