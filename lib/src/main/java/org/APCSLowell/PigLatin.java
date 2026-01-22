@@ -38,7 +38,7 @@ public class PigLatin {
 
         } else { //Starts with consonant, has vowels
             int firstVowelIndex = findFirstVowel(sWord);
-            return substring(firstVowelIndex) + substring(0, firstVowelIndex) + "ay";
+            return sWord.substring(firstVowelIndex) + sWord.substring(0, firstVowelIndex) + "ay";
         }
     }
 
